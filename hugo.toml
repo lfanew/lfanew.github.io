@@ -1,0 +1,51 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'lfanew'
+theme = 'PaperMod'
+
+
+
+[params]
+title = 'lfanew'
+keywords = ['blog', 'development']
+author = 'Me'
+DateFormat = 'January 2, 2006'
+ShowReadingTime = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+showtoc = true
+
+[params.profileMode]
+enabled = true
+title = 'lfanew'
+imageUrl = 'goose.png'
+imageWidth = 240
+imageHeight = 240
+imageTitle = 'Goose'
+
+# [params.homeInfoParams]
+# title = 'Hi there'
+# content = 'yyoyoyo'
+
+[[params.socialIcons]]
+name = 'github'
+url = 'https://github.com/lfanew'
+[[params.socialIcons]]
+name = 'youtube'
+url = 'https://youtube.com/@lfanew'
+
+[[menu.main]]
+identifier = 'home'
+name = '/'
+url = '/'
+weight = '10'
+[[menu.main]]
+identifier = 'posts'
+name = 'posts'
+url = '/posts/'
+weight = '20'
+[[menu.main]]
+identifier = 'tags'
+name = 'tags'
+url = '/tags/'
+weight = '30'
