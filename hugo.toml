@@ -1,7 +1,8 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://www.lfanew.com/'
 languageCode = 'en-us'
 title = 'lfanew'
 theme = 'PaperMod'
+paginate = 5
 
 
 
@@ -49,3 +50,7 @@ identifier = 'tags'
 name = 'tags'
 url = '/tags/'
 weight = '30'
+
+[params.assets]
+favicon = 'favicon.ico'
+favicon32x32 = 'favicon.ico'
