@@ -50,3 +50,6 @@ identifier = 'tags'
 name = 'tags'
 url = '/tags/'
 weight = '30'
+
+[params.assets]
+favicon = 'favicon.ico'
