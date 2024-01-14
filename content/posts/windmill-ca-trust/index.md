@@ -81,6 +81,8 @@ Prerequisites:
       - ./ca:/usr/local/share/ca-certificates:ro # Our new line!
 ```
 
+> NOTE: You could technically mount the single file cert bundle from the container host instead (if you know where it is as it varies from distros), avoiding the need to perform `update-ca-certificates`. However, this requires you to trust the CA certificate on the container host itself.
+
 ## First Test
 
 Now that we have our CA certificates in place let's test functionality. Our test will be trying to hit a TLS protected API https://api.local that was signed with an internal CA in my lab.
