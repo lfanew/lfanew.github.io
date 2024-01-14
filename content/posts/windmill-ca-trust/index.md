@@ -22,7 +22,7 @@ tags = ['windmill', 'tls']
 
 # Introduction
 
-[Windmill](https://github.com/windmill-labs/windmill) is awesome. It allows you to create internal tools and workflows rapidly. But when working on _internal_ tools in Windmill, you've probably come across these frustrating errors when trying to reach _internal_ endpoints at least once or twice.
+[Windmill](https://github.com/windmill-labs/windmill) is awesome. It allows you to create internal tools and workflows rapidly. But when working on _internal_ tools in Windmill, you've probably come across these errors when trying to reach _internal_ endpoints at least once or twice.
 
 ![Deno SSL error](images/deno-fail.png)
 
