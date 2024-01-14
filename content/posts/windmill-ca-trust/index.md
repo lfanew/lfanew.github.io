@@ -110,14 +110,9 @@ Go and PowerShell now both trust our internally signed certificate!
 
 ![PowerShell](images/success.png)
 
-### Summary
-
-1. We have mounted a directory containing our internal CA certificates
-2. We ensured the containers update their store using the `INIT_SCRIPT` environment variable.
-
 ## Getting Deno's trust
 
-Deno is a bit of a security nut (which is a good thing!). Because of this, however, we need to take some extra steps to have it trust the CA certificates we just mounted. Luckily Deno knows this is a problem and [provides a solution](https://docs.deno.com/runtime/manual/getting_started/setup_your_environment#environment-variables).
+Deno is a bit of a security nut (which is a good thing!). Because of this, however, we need to take some extra steps to have it trust the CA certificates we just mounted. Luckily the Deno team knows about this and [provides a solution](https://docs.deno.com/runtime/manual/getting_started/setup_your_environment#environment-variables).
 
 We set an environment variable `DENO_TLS_CA_STORE` to tell Deno to use our system's CA store. All we need to do is have this set inside of our workers. Again, we will modify the `docker-compose.yml` for this.
 
