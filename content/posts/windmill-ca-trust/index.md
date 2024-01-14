@@ -87,6 +87,8 @@ Prerequisites:
 
 Now that we have our CA certificates in place let's test functionality. Our test will be trying to hit a TLS protected API https://api.local that was signed with an internal CA in my lab.
 
+[Scripts used for testing](#scripts-used-for-testing)
+
 ### Deno & Python
 
 Our Deno and Python tests failed. They still do not trust the issuer of api.local's certificate
