@@ -81,8 +81,6 @@ Prerequisites:
       - ./ca:/usr/local/share/ca-certificates:ro # Our new line!
 ```
 
-4. Run `docker compose up -d`
-
 ## First Test
 
 Now that we have our CA certificates in place let's test functionality. Our test will be trying to hit a TLS protected API https://api.local that was signed with an internal CA in my lab.
