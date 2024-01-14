@@ -134,7 +134,7 @@ We actually set it to the value `system,mozilla` instead of just `system`. This 
 
 # Getting Python's (requests) trust
 
-The `requests` library we use for Python uses the CA certificates from the `certifi` library (more info [here](https://requests.readthedocs.io/en/latest/user/advanced/#ssl-cert-verification)). We can tell it, just like Deno, to use our systems CA store. However, we actually need to tell it where that store is located. (Refer back to the  for how `ca-certificates` on Debian)
+The `requests` library we use for Python uses the CA certificates from the `certifi` library (more info [here](https://requests.readthedocs.io/en/latest/user/advanced/#ssl-cert-verification)). We can tell it, just like Deno, to use our systems CA store. However, we actually need to tell it where that store is located. (Refer back to the  for how `ca-certificates` work on Debian)
 
 ```yaml
 windmill_worker:
