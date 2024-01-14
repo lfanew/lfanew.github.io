@@ -31,9 +31,9 @@ imageTitle = 'lfamoon'
 [[params.socialIcons]]
 name = 'github'
 url = 'https://github.com/lfanew'
-[[params.socialIcons]]
-name = 'youtube'
-url = 'https://youtube.com/@lfanew'
+# [[params.socialIcons]]
+# name = 'youtube'
+# url = 'https://youtube.com/@lfanew'
 
 [[menu.main]]
 identifier = 'home'
