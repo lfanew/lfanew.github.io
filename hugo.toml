@@ -9,7 +9,7 @@ paginate = 5
 [params]
 title = 'lfanew'
 keywords = ['blog', 'development']
-author = 'Me'
+author = 'Tyler'
 DateFormat = 'January 2, 2006'
 ShowReadingTime = true
 ShowBreadCrumbs = true
