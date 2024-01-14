@@ -99,7 +99,12 @@ Our Deno and Python tests failed. They still do not trust the issuer of api.loca
 
 Go and PowerShell now both trust our internally signed certificate!
 
-![Go Success](images/success.png)
+
+**Go**:
+
+![Go Success](images/go-success.png)
+
+**PowerShell**:
 
 ![PowerShell](images/success.png)
 
