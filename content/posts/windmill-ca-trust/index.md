@@ -5,9 +5,7 @@ draft = false
 tags = ['windmill', 'tls']
 +++
 
-# Configuring Windmill to Trust Internal/Corporate CAs
-
-## TL;DR
+# TL;DR
 
 1. **Mount CA Certificates in Windmill**
    - Ensure CA certificate is base64 encoded and has `.crt` extension.
@@ -22,7 +20,7 @@ tags = ['windmill', 'tls']
    - Set `REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` in the worker's environment variables.
    - Add `WHITELIST_ENVS=REQUESTS_CA_BUNDLE` to explicitly allow this variable in Windmill workers. 
 
-## Introduction
+# Introduction
 
 [Windmill](https://github.com/windmill-labs/windmill) is awesome. It allows you to create internal tools and workflows rapidly. But when working on _internal_ tools in Windmill, you've probably come across these frustrating errors when trying to reach _internal_ endpoints at least once or twice.
 
@@ -38,7 +36,7 @@ The reason for this is Windmill, and the runtimes bundled with its workers, trus
 
 I will take you through a solution to this problem which **avoids** disabling SSL verification. We will focus on making sure it works with at least Deno, Go, PowerShell, and Python (requests).
 
-## Getting your CA certificates inside of Windmill
+# Getting your CA certificates inside of Windmill
 
 The first thing we need to do is expose our CA certificates to the workers which run our scripts. We must know a few things before doing this:
 
@@ -52,7 +50,7 @@ Knowing this information, we now know we need to:
 1. Mount our CA cert inside of `/usr/local/share/ca-certificates`
 2. Run `update-ca-certificates` when these worker containers are created
 
-### Mounting our CA certificate
+## Mounting our CA certificate
 
 Prerequisites:
 - Have your CA certificate copied onto the machine running Windmill
@@ -83,13 +81,13 @@ Prerequisites:
 
 > NOTE: You could technically mount the single file cert bundle from the container host instead (if you know where it is as it varies from distros), avoiding the need to perform `update-ca-certificates`. However, this requires you to trust the CA certificate on the container host itself.
 
-## First Test
+# First Test
 
 Now that we have our CA certificates in place let's test functionality. Our test will be trying to hit a TLS protected API https://api.local that was signed with an internal CA in my lab.
 
 [Scripts used for testing](#scripts-used-for-testing)
 
-### Deno & Python
+## Deno & Python
 
 Our Deno and Python tests failed. They still do not trust the issuer of api.local's certificate
 
@@ -97,7 +95,7 @@ Our Deno and Python tests failed. They still do not trust the issuer of api.loca
 
 ![Python Requests SSL error](images/py-fail.png)
 
-### Go & PowerShell
+## Go & PowerShell
 
 Go and PowerShell now both trust our internally signed certificate!
 
@@ -110,12 +108,12 @@ Go and PowerShell now both trust our internally signed certificate!
 
 ![PowerShell](images/success.png)
 
-### Summary
+## Summary
 
 1. We have mounted a directory containing our internal CA certificates
 2. We ensured the containers update their store using the `INIT_SCRIPT` environment variable.
 
-## Getting Deno's trust
+# Getting Deno's trust
 
 Deno is a bit of a security nut (which is a good thing!). Because of this, however, we need to take some extra steps to have it trust the CA certificates we just mounted. Luckily Deno knows this is a problem and [provides a solution](https://docs.deno.com/runtime/manual/getting_started/setup_your_environment#environment-variables).
 
@@ -139,7 +137,7 @@ We set an environment variable `DENO_TLS_CA_STORE` to tell Deno to use our syste
 
 We actually set it to the value `system,mozilla` instead of just `system`. This way Deno has its original store still just in case the Mozilla CA bundle in the worker's system CA store ever goes haywire (probably due to me messing it up, really).
 
-## Getting Python's (requests) trust
+# Getting Python's (requests) trust
 
 The `requests` library we use for Python uses the CA certificates from the `certifi` library (more info [here](https://requests.readthedocs.io/en/latest/user/advanced/#ssl-cert-verification)). We can tell it, just like Deno, to use our systems CA store. However, we actually need to tell it where that store is located. (Refer back to the  for how `ca-certificates` on Debian)
 
@@ -174,21 +172,21 @@ windmill_worker:
     - WHITELIST_ENVS=REQUESTS_CA_BUNDLE # Our new line!
 ```
 
-## Second Test
+# Second Test
 
 Our Deno and Python tests now both succeed!
 
-### Deno
+## Deno
 
 ![Deno success](images/success.png)
 
-### Python
+## Python
 
 ![Python success](images/success.png)
 
-## Scripts used for testing
+# Scripts used for testing
 
-### Deno
+## Deno
 
 ```typescript
 export async function main() {
@@ -197,7 +195,7 @@ export async function main() {
 }
 ```
 
-### Go
+## Go
 
 ```go
 package inner
@@ -221,13 +219,13 @@ func main() (bool, error) {
 }
 ```
 
-### PowerShell
+## PowerShell
 
 ```powershell
 Invoke-RestMethod "https://api.local" | ConvertTo-Json -Compress
 ```
 
-### Python
+## Python
 
 ```python
 import requests
