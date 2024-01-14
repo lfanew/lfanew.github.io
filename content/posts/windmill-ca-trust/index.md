@@ -52,7 +52,7 @@ Knowing this information, we now know we need to:
 
 ## Mounting our CA certificate
 
-Prerequisites:
+**Prerequisites**:
 - Have your CA certificate copied onto the machine running Windmill
 - Ensure your CA certificate is base64 encoded
 - Ensure your CA certificate ends with a `.crt` extension
@@ -79,7 +79,7 @@ Prerequisites:
       - ./ca:/usr/local/share/ca-certificates:ro # Our new line!
 ```
 
-> NOTE: You could technically mount the single file cert bundle from the container host instead (if you know where it is as it varies from distros), avoiding the need to perform `update-ca-certificates`. However, this requires you to trust the CA certificate on the container host itself.
+> **NOTE**: You could technically mount the single file cert bundle from the container host instead (if you know where it is as it varies from distros), avoiding the need to perform `update-ca-certificates`. However, this requires you to trust the CA certificate on the container host itself.
 
 # First Test
 
